@@ -34,6 +34,7 @@ use Spatie\EloquentSortable\Sortable;
  * @method Field\Slider         slider($column, $label = '')
  * @method Field\Map            map($latitude, $longitude, $label = '')
  * @method Field\Editor         editor($column, $label = '')
+  * @method Field\UEditor       ueditor($column, $label = '')
  * @method Field\File           file($column, $label = '')
  * @method Field\Image          image($column, $label = '')
  * @method Field\Date           date($column, $label = '')
@@ -852,6 +853,7 @@ class Form
             'divider'           => \Encore\Admin\Form\Field\Divide::class,
             'divide'            => \Encore\Admin\Form\Field\Divide::class,
             'editor'            => \Encore\Admin\Form\Field\Editor::class,
+            'ueditor'           => \Encore\Admin\Form\Field\UEditor::class,
             'email'             => \Encore\Admin\Form\Field\Email::class,
             'embedsMany'        => \Encore\Admin\Form\Field\EmbedsMany::class,
             'file'              => \Encore\Admin\Form\Field\File::class,

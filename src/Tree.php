@@ -21,7 +21,7 @@ class Tree implements Renderable
     {
         $this->model = $model;
 
-        $this->path = app('router')->current()->getPath();
+        $this->path = url(app('router')->current()->getPath());
         $this->elementId .= uniqid();
     }
 
@@ -55,7 +55,7 @@ class Tree implements Renderable
         $('._delete').click(function() {
             var id = $(this).data('id');
             if(confirm("{$confirm}")) {
-                $.post('/{$this->path}/' + id, {_method:'delete','_token':'{$token}'}, function(data){
+                $.post('{$this->path}/' + id, {_method:'delete','_token':'{$token}'}, function(data){
                     $.pjax.reload('#pjax-container');
                 });
             }
@@ -63,7 +63,7 @@ class Tree implements Renderable
 
         $('.{$this->elementId}-save').click(function () {
             var serialize = $('#{$this->elementId}').nestable('serialize');
-            $.get('/{$this->path}', {'_tree':JSON.stringify(serialize)}, function(data){
+            $.get('{$this->path}', {'_tree':JSON.stringify(serialize)}, function(data){
                 $.pjax.reload('#pjax-container');
             });
         });

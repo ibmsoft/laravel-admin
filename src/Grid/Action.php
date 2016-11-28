@@ -29,7 +29,7 @@ class Action
      * @var array
      */
     protected $defaultActionViews = [
-        self::EDIT   => '<a href="/{path}/{id}/edit"><i class="fa fa-edit"></i></a> ',
+        self::EDIT   => '<a href="{path}/{id}/edit"><i class="fa fa-edit"></i></a> ',
         self::DELETE => '<a href="javascript:void(0);" data-id="{id}" class="_delete"><i class="fa fa-trash"></i></a> ',
     ];
 
@@ -78,7 +78,7 @@ class Action
      */
     protected function setUpScript()
     {
-        $this->path = app('router')->current()->getPath();
+        $this->path = url(app('router')->current()->getPath());
 
         $confirm = trans('admin::lang.delete_confirm');
         $token = csrf_token();
@@ -87,7 +87,7 @@ class Action
 $('._delete').click(function() {
     var id = $(this).data('id');
     if(confirm("{$confirm}")) {
-        $.post('/{$this->path}/' + id, {_method:'delete','_token':'{$token}'}, function(data){
+        $.post('{$this->path}/' + id, {_method:'delete','_token':'{$token}'}, function(data){
 
             if (typeof data === 'object') {
                 if (data.status) {
