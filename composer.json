@@ -39,6 +39,8 @@
         "classmap": [
             "tests/TestCase.php"
         ]
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 
 }
