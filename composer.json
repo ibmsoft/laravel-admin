@@ -3,7 +3,7 @@
     "description": "laravel admin",
     "type": "library",
     "keywords": ["laravel", "admin", "grid", "chart", "form"],
-    "homepage": "https://github.com/s0393/laravel-admin",
+    "homepage": "https://github.com/ibmsoft/laravel-admin",
     "license": "MIT",
     "authors": [
         {
@@ -39,5 +39,7 @@
         "classmap": [
             "tests/TestCase.php"
         ]
-    }
+    },
+    "minimum-stability": "dev"
+
 }
