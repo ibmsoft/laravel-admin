@@ -2,7 +2,7 @@
     <ul class="nav nav-tabs">
 
         @foreach($tabs as $id => $tab)
-        <li {{ $id == 0 ? 'class=active' : '' }}><a href="#tab_{{ $id }}" data-toggle="tab">{{ $tab['title'] }}</a></li>
+        <li {{ $id == 0 ? 'class=active' : '' }}><"#tab_{{ $id }}" data-toggle="tab">{{ $tab['title'] }}</a></li>
         @endforeach
 
         @if (!empty($dropDown))

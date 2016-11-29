@@ -16,13 +16,13 @@
 
             @if($grid->allowExport())
                 <div class="btn-group pull-right" style="margin-right: 10px">
-                    <a href="/{{ $grid->exportUrl() }}" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-download"></i>&nbsp;&nbsp;{{ trans('admin::lang.export') }}</a>
+                    <a href="{{ url($grid->exportUrl()) }}" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-download"></i>&nbsp;&nbsp;{{ trans('admin::lang.export') }}</a>
                 </div>
             @endif
 
             @if($grid->allowCreation())
                 <div class="btn-group pull-right" style="margin-right: 10px">
-                    <a href="/{{$grid->resource()}}/create" class="btn btn-sm btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;{{ trans('admin::lang.new') }}</a>
+                    <a href="{{ url($grid->resource())}}/create" class="btn btn-sm btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;{{ trans('admin::lang.new') }}</a>
                 </div>
             @endif
 
