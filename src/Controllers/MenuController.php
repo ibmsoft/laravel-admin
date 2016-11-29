@@ -33,7 +33,7 @@ class MenuController extends Controller
                     $column->append($this->callout());
 
                     $form = new \Encore\Admin\Widgets\Form();
-                    $form->action(admin_url('auth/menu'));
+                    $form->action(url(admin_url('auth/menu')));
 
                     $options = [0 => 'Root'] + MenuModel::buildSelectOptions();
                     $form->select('parent_id', trans('admin::lang.parent_id'))->options($options);
