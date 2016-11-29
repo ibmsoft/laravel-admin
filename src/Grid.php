@@ -752,7 +752,7 @@ class Grid
      */
     public function script()
     {
-        $path = app('router')->current()->getPath();
+        $path = url(app('router')->current()->getPath());
         $token = csrf_token();
         $confirm = trans('admin::lang.delete_confirm');
 
@@ -777,7 +777,7 @@ $('.batch-delete').on('click', function() {
     }
 
     if(confirm("{$confirm}")) {
-        $.post('/{$path}/' + selected.join(), {_method:'delete','_token':'{$token}'}, function(data){
+        $.post('{$path}/' + selected.join(), {_method:'delete','_token':'{$token}'}, function(data){
             $.pjax.reload('#pjax-container');
             noty({
                 text: "<strong>Succeeded!</strong>",
