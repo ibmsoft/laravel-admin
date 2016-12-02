@@ -49,6 +49,8 @@ php artisan vendor:publish --tag=laravel-admin
 php artisan admin:install
 ```
 
+zysoft
+
 open `http://localhost/admin/` in browser,use username `admin` and password `admin` to login.
 
 Default Settings
