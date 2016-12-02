@@ -44,9 +44,25 @@ class Model
     protected $perPage = 20;
 
     /**
+     * If the model use pagination.
+     *
      * @var bool
      */
     protected $usePaginate = true;
+
+    /**
+     * The query string variable used to store the per-page.
+     *
+     * @var string
+     */
+    protected $perPageName = 'per_page';
+
+    /**
+     * The query string variable used to store the sort.
+     *
+     * @var string
+     */
+    protected $sortName = '_sort';
 
     /**
      * Create a new grid model instance.
@@ -78,6 +94,52 @@ class Model
     public function usePaginate($use = true)
     {
         $this->usePaginate = $use;
+    }
+
+    /**
+     * Get the query string variable used to store the per-page.
+     *
+     * @return string
+     */
+    public function getPerPageName()
+    {
+        return $this->perPageName;
+    }
+
+    /**
+     * Set the query string variable used to store the per-page.
+     *
+     * @param  string  $name
+     * @return $this
+     */
+    public function setPerPageName($name)
+    {
+        $this->perPageName = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the query string variable used to store the sort.
+     *
+     * @return string
+     */
+    public function getSortName()
+    {
+        return $this->sortName;
+    }
+
+    /**
+     * Set the query string variable used to store the sort.
+     *
+     * @param  string  $name
+     * @return $this
+     */
+    public function setSortName($name)
+    {
+        $this->sortName = $name;
+
+        return $this;
     }
 
     /**
@@ -184,7 +246,7 @@ class Model
      */
     protected function resolvePerPage($paginate)
     {
-        if ($perPage = app('request')->input('per_page')) {
+        if ($perPage = app('request')->input($this->perPageName)) {
             if (is_array($paginate)) {
                 $paginate['arguments'][0] = $perPage;
 
@@ -218,7 +280,7 @@ class Model
      */
     protected function setSort()
     {
-        $this->sort = Input::get('_sort', []);
+        $this->sort = Input::get($this->sortName, []);
         if (!is_array($this->sort)) {
             return;
         }
