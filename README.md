@@ -49,7 +49,17 @@ php artisan vendor:publish --tag=laravel-admin
 php artisan admin:install
 ```
 
-zysoft
+About laravel-ueditor 整合问题
+1、保存ueditor 内容的文本要长 ，可设置 longtext
+2、保存前 对内容进行 html 转译处理，防止注入
+* 保存前  $form->ftext = htmlspecialchars($form->ftext);
+
+3、再次编辑的时候进行转译
+*  $ftext = html_entity_decode( $this->value );
+4、内容显示的时候
+*         {!! html_entity_decode($zynews->ftext) !!}
+
+
 
 open `http://localhost/admin/` in browser,use username `admin` and password `admin` to login.
 

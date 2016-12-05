@@ -34,7 +34,7 @@ use Spatie\EloquentSortable\Sortable;
  * @method Field\Slider         slider($column, $label = '')
  * @method Field\Map            map($latitude, $longitude, $label = '')
  * @method Field\Editor         editor($column, $label = '')
-  * @method Field\UEditor       ueditor($column, $label = '')
+ * @method Field\UEditor        ueditor($column, $label = '')
  * @method Field\File           file($column, $label = '')
  * @method Field\Image          image($column, $label = '')
  * @method Field\Date           date($column, $label = '')

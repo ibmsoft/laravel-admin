@@ -4,6 +4,9 @@ namespace Encore\Admin\Form\Field;
 
 use Encore\Admin\Form\Field;
 
+/**
+* 保存前  $form->ftext = htmlspecialchars($form->ftext);
+**/
 class UEditor extends Field
 {
 
@@ -13,11 +16,13 @@ class UEditor extends Field
 
     public function render()
     {
+        $ftext = html_entity_decode( $this->value );
+
         $this->script = "
             var ue = UE.getEditor('{$this->column}');
             ue.ready(function() {
-                ue.setContent('{$this->value}');
-                ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.    
+                ue.setContent('{$ftext}');
+                ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');    
             });
        
         ";
