@@ -8,7 +8,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
-use Tests\Models\Profile;
+use Tests\Models\Tag;
 use Tests\Models\User;
 
 class UserController extends Controller
@@ -127,19 +127,21 @@ class UserController extends Controller
             $form->text('username');
             $form->email('email')->rules('required');
             $form->mobile('mobile');
-            $form->image('avatar');
+            $form->image('avatar')->help('上传头像', 'fa-image');
             $form->password('password');
 
             $form->divide();
 
             $form->text('profile.first_name');
             $form->text('profile.last_name');
-            $form->text('profile.postcode');
+            $form->text('profile.postcode')->help('Please input your postcode');
             $form->textarea('profile.address')->rows(15);
             $form->map('profile.latitude', 'profile.longitude', 'Position');
             $form->color('profile.color');
             $form->datetime('profile.start_at');
             $form->datetime('profile.end_at');
+
+            $form->multipleSelect('tags', 'Tags')->options(Tag::all()->pluck('name', 'id')); //->rules('max:10|min:3');
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
